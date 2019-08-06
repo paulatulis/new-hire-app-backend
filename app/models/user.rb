@@ -1,10 +1,9 @@
 class User < ApplicationRecord
-
+  has_secure_password
   has_many :lunches, dependent: :destroy
   has_many :colleagues, through: :lunches
   
-  has_many :notes, dependent: :destroy
-  has_many :tasks, through: :notes
+  has_many :tasks
 
   def my_lunches
     Lunch.where("user_id = ?", self.id)

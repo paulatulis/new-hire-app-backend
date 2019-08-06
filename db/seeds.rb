@@ -67,11 +67,11 @@ task1 = Task.create(
     complete: true
 )
 
-Note.create(
-    user_id: paula.id,
-    task_id: task1.id,
-    body: "Note about allHands"
-)
+# Note.create(
+#     user_id: paula.id,
+#     task_id: task1.id,
+#     body: "Note about allHands"
+# )
 
 Lunch.create(
     user_id: paula.id,

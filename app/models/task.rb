@@ -1,6 +1,4 @@
 class Task < ApplicationRecord
-  belongs_to :user 
-  has_many :notes
-  has_many :users, through: :notes
+  belongs_to :user
 
 end

@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     def login
         @user = User.find_by(username: params[:session][:username].downcase)
         
-        if @user && @user.authenticate?(params[:session][:password])
+        if @user && @user.authenticate(params[:session][:password])
           token = jwt_encode({ user_id: @user.id })
           render json: { token: token, user: UserSerializer.new(@user) }, status: :accepted
         else
@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       end
       
       def initState
-          render json: { user: UserSerializer.new(@user) }, status: :ok
+          @user = User.find(current_user.id)
+          render json: @user, each_serializer: UserSerializer
       end
 end

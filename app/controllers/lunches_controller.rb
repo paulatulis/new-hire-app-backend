@@ -14,10 +14,12 @@ class LunchesController < ApplicationController
 	  end
 	  
 	def create
-		@lunch = Lunch.new(user_id: @user.id, colleague_id: params[:colleague_id])
+		@lunch = Lunch.new(lunch_params)
+		@user = User.find(lunch_params[:user_id])
+		
 
 		if @lunch.save
-			render json: { user: UserSerializer.new(@user) }, status: :accepted
+			render json: @user, each_serializer: UserSerializer.new(@user), status: :accepted
 		else
 			render json: { errors: (@lunch.errors) }, status: :unprocessable_entity
 		end
@@ -25,13 +27,20 @@ class LunchesController < ApplicationController
 
 	def destroy
 		@lunch = Lunch.find(params[:id])
+		@user = User.find(lunch_params[:user_id])
 
 		if @lunch
 			@lunch.destroy
-			render json: { user: UserSerializer.new(@user) }, status: :ok
+
+			render json: @user, each_serializer: UserSerializer.new(@user), status: :ok
 		else
 			render json: { errors: ["Lunch of id #{params[:id]} not found."] }, status: :not_found
 		end
+	end
+
+	private
+	def lunch_params
+        params.require(:lunch).permit(:user_id, :colleague_id, :location, :address, :name, :photo, :yelp_info, :date)
 	end
 
 end

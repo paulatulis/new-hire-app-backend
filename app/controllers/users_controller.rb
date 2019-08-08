@@ -1,19 +1,18 @@
 class UsersController < ApplicationController
-    # skip_before_action :authorize, only: [:index, :create]
-  
+
     def index
         @users = User.all
         render json: @users, each_serializer: UserSerializer
-    end 
+    end
 
     def show
         @user = User.find(params[:id])
 
-        if @user 
+        if @user
             render json: {user: UserSerializer.new(@user)}, status: :ok
         else
             render json: {errors: ['User not found.']}, status: :not_found
-        end 
+        end
     end
 
     def create
@@ -22,7 +21,7 @@ class UsersController < ApplicationController
         if @user.save
             token = jwt_encode({user_id: @user.id})
             render json: {token: token, user: UserSerializer.new(@user)}, status: :ok
-        else 
+        else
             render json: {errors: (@user.errors.full_messages)}, status: :unprocessable_entity
         end 
     end 
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
-            render json: {user: UserSerializer.new(@user) }, status: :accepted
+            render json: @user, each_serializer: UserSerializer.new(@user), status: :accepted
         else
             render json: {errors: @user.errors.full_messages}, status: :declined
       end

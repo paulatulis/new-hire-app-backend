@@ -17,12 +17,102 @@ paula = User.create(
     email: 'tulis.paula@gmail.com',
     photo: profile_pics.sample,
     team: 'Eng',
-    password: '123',
+    password: '12345',
     first_name: 'Paula',
     last_name:  'Tulis',
     username: 'paulatulis',
     title: 'jr. developer',
     bio: "Here is my bio",
+    start_date: Date.today,
+    location: 'Atlanta',
+    manager: false
+)
+
+anna = User.create(
+    email: 'anna@gmail.com',
+    photo: profile_pics.sample,
+    team: 'Eng',
+    password: '12345',
+    first_name: 'Anna',
+    last_name:  'F',
+    username: 'AnnaF',
+    title: 'Sr. Developer',
+    bio: "It's me, Anna!",
+    start_date: Date.today,
+    location: 'Atlanta',
+    manager: false
+)
+
+Robin = User.create(
+    email: 'robin@gmail.com',
+    photo: profile_pics.sample,
+    team: 'Sales',
+    password: '12345',
+    first_name: 'Robin',
+    last_name:  'Alexander',
+    username: 'Jobin',
+    title: 'Enterprise Account Manager',
+    bio: "Party with Cardi",
+    start_date: Date.today,
+    location: 'Atlanta',
+    manager: false
+)
+
+Alyssa = User.create(
+    email: 'alyssa@gmail.com',
+    photo: profile_pics.sample,
+    team: 'Account Management',
+    password: '12345',
+    first_name: 'Alyssa',
+    last_name:  'T',
+    username: 'Angelina',
+    title: 'Senior Account Manager',
+    bio: "My name's Alyssa and I love to party!",
+    start_date: Date.today,
+    location: 'Atlanta',
+    manager: false
+)
+
+Sam = User.create(
+    email: 'sam@gmail.com',
+    photo: profile_pics.sample,
+    team: 'Sales',
+    password: '12345',
+    first_name: 'Sam',
+    last_name:  'Slevin',
+    username: '24slevin',
+    title: 'VP Account Management',
+    bio: "ABC",
+    start_date: Date.today,
+    location: 'Atlanta',
+    manager: false
+)
+
+samj = User.create(
+    email: 'samjo@gmail.com',
+    photo: profile_pics.sample,
+    team: 'Product',
+    password: '12345',
+    first_name: 'Sam',
+    last_name:  'Jo',
+    username: 'SammyJo',
+    title: 'Product Manager',
+    bio: "Born and raised in Jersey. Love everything baking-related. Say hi!",
+    start_date: Date.today,
+    location: 'Atlanta',
+    manager: false
+)
+
+adi = User.create(
+    email: 'adi@gmail.com',
+    photo: profile_pics.sample,
+    team: 'Finance',
+    password: '12345',
+    first_name: 'Adi',
+    last_name:  'D',
+    username: 'ItsMeAdiDee',
+    title: 'Staff Accountant',
+    bio: "Always down to talk about music. Love ska.",
     start_date: Date.today,
     location: 'Atlanta',
     manager: false
